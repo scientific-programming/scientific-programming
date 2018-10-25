@@ -1,0 +1,11 @@
+[submodule "public/public"]
+	path = public/public
+	url = git@github.com:scientific-programming/scientific-programming.github.io.git
+	branch = master
+[submodule "public"]
+	path = public
+	url = git@github.com:scientific-programming/scientific-programming.github.io.git
+	branch = master
+[submodule "themes/learn"]
+	path = themes/learn
+	url = https://github.com/matcornic/hugo-theme-learn.git

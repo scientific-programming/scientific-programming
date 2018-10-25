@@ -1,0 +1,4 @@
+baseURL = "http://scientific-programming.github.io"
+languageCode = "en-gb"
+title = "Scientific Programming"
+theme = "learn"
