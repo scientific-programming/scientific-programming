@@ -1,0 +1,178 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%   TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Lecture 1 - Containers]{Lecture 1 - Containers} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Ryan Pepper} % Your name
+\institute[University of Southampton] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+University of Southampton \\ % Your institution for the title page
+\medskip
+\textit{ryan.pepper@soton.ac.uk} % Your email address
+}
+\date{October 29th 2018} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+% \begin{frame}
+% \frametitle{Overview} % Table of contents slide, comment this block out to remove it
+% \tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+% \end{frame}
+
+%----------------------------------------------------------------------------------------
+%   PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{What are containers?} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+
+\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{What are containers?}
+\begin{itemize}
+    \item Mechanism for setting up environment
+    \item Allows control of dependencies
+    \item Describes setup process through scripting in standardised manner
+    \item Can be easily distributed to others (binary vs script)
+    \item Not a virtual machine (in most cases...)
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Terminology}
+\begin{itemize}
+\item Host - Computer running VM/container.
+\item Image - Binary file 
+\item Hypervisor - software running VM.
+\item Kernel - Core OS components
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\section{Comparisons with Virtual Machines}
+\subsection{How are containers like VMs?}
+\begin{frame}
+\frametitle{How are containers like VMs?}
+\begin{block}{Isolated environment}
+Processes run isolated from other processes - they can't access hardware resources they aren't allocated.
+\end{block}
+
+\begin{block}{They are independent}
+Generally you can be given a container image or a virtual machine image and use that to run a piece of software without doing anything else.
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{How are containers not like VMs?}
+\begin{block}{They use Kernel features of the host}
+Linux supports process and resource partitioning and isolation (cgroups, OverlayFS, kernel namespacing), which allows containers to use a subset of resources.
+\end{block}
+
+\begin{block}{VMs require a Hypervisor}
+The hypervisor is a software based emulation layer for computer hardware and so it is generally ~20\% slower running software in a VM than natively, even with Intel Vf-X, Sun GridEngine. Free hypervisors slow; commercial are expensive!
+\end{block}
+
+\begin{block}{Generally containers are command-line only}
+With VMs it is very easy to get a full desktop environment. With containers this use case is not well supported.
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Practical}
+
+\end{frame}
+
+\end{document}
