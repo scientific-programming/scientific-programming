@@ -1,10 +1,17 @@
+---
+type: "Homepage"
+creatordisplayname: "Ryan Pepper"
+creatoremail: "ryan.pepper@soton.ac.uk"
+weight: 1
+---
+
 # Scientific Programming
 
 This website aims to be a self contained basics course designed
 for scientists who need to do some programming as part of their
 research. The topics covered are:
 
-* Containerization - How can a team of developers, often working remotely from one another set up a consistent environment for developing their software? If you have ever been sent code by someone and not been able to run it, this section is for you... We will show you how to configure a container to run a C/C++ or Python application using Docker.
+* Containerisation - How can a team of developers, often working remotely from one another set up a consistent environment for developing their software? If you have ever been sent code by someone and not been able to run it, this section is for you... We will show you how to configure a container to run a C/C++ or Python application using Docker.
 
 * Version Control - No longer will you have 5 versions of your code in a folder with names like 'main-working-18-04-2017.cpp', 'main-not-working-16-08-2018.cpp'... We'll teach how to set up a history of code development using the tool Git.  
 
