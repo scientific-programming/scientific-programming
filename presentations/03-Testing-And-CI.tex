@@ -1,0 +1,250 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%   TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Modern Software Development Practices]{Testing Scientific Codes} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Ryan Pepper} % Your name
+\institute[University of Southampton] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+University of Southampton \\ % Your institution for the title page
+\medskip
+\textit{ryan.pepper@soton.ac.uk} % Your email address
+}
+\date{October 29th 2018} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Scientific Method}
+Set of rough principles:
+\begin{itemize}
+\item Ask a question.
+\item Form a hypothesis.
+\item Make a prediction based on the hypothesis.
+\item Design an experiment to test the hypothesis.
+\item Build the equipment
+\item \textbf{Calibrate equipment by testing it}
+\item Run the experiment
+\item Detail carefully the procedures and record information.
+\item Draw conclusions from results.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{How often is this piece missing in scientific software?}
+\begin{itemize}
+    \item Often ad-hoc changes made to code which mean things stop working.
+    \item If you don't run tests on the code, you will often come back and find previous versions have stopped working.
+    \item Especially common when multiple people working on software.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Principles of Software Testing}
+\begin{itemize}
+\item Software must meet the requirements
+\item Software must respond correctly to different inputs
+\item Software must run in a reasonable amount of time
+\item Can be installed and run in the intended environment
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Static vs Dynamic Testing}
+\begin{block}{Static Testing}
+    \begin{itemize}
+        \item Reviews - Reviewing the code manually as a group.
+        \item Walthrough - Parties go through a products specification to give feedback on potential defects.
+        \item \textbf{Verification of design}
+    \end{itemize}
+\end{block}
+
+\begin{block}{Dynamic Testing}
+    \begin{itemize}
+        \item Executing portions of the code and checking the response.
+        \item \textbf{Validation of design}
+    \end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Why is it difficult for science?}
+\begin{itemize}
+    \item Much of the time you don't know what the results will be.
+    \item Realistic problems can take time to run.
+    \item 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Why is it crucial for science?}
+    \begin{itemize}
+        \item Often need to implement new algorithms or change things.
+        \item Changing without testing will break things.
+        \item You might need to come back to a previous experiment to use it as the basis for a new one; if the code is broken, you will have issues!
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Dynamic Testing: Types of Test}
+    \begin{block}{Unit Tests}
+        \begin{itemize}
+            \item Code is written in small, independent functions
+            \item Each function has tests that check that the result makes sense
+            \item For e.g. a test of a function that calculates sin could check $\sin{\left(n\pi\right)} = 0 \,\,\,\,\, \forall n \in \mathbb{Z}$
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Integration Tests}
+        \begin{itemize}
+            \item Tests check that the system as a whole works convincingly.
+            \item For e.g. a test of a molecular dynamics code might test that the pressure is close to the expected value after some equilibrium time.
+            \item Much, much harder to design, but essential - can be written so that they also serve as examples of how to use the software.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Regression Tests}
+        \begin{itemize}
+            \item Check that results don't get less accurate over time.
+            \item Check that performance stays the same or gets better over time.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Things to watch out for...}
+    \begin{itemize}
+        \item Testing frameworks - pick one and stick with it.
+        \item 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Aside: Test Driven Development}
+    Methodology for testing where \textbf{tests are written before writing any code}.
+
+    This means...
+    \begin{itemize}
+    \item Before writing any code you need to plan out what the interface should be (i.e. what arguments get passed to functions).
+    \item You must work out what the output should be before writing any code.
+    \item Can form part of the 'agile' methodology for software development.
+    \item Can be difficult for developing scientific code where answers can be difficult to determine in advance.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \centering 
+    A practical demonstration...
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Continuous Integration}
+    What is CI?
+    \begin{itemize}
+        \item Runs the tests repeatedly, every time you make a change.
+        \item Sends you angry emails when tests fail!
+        \item Usually done remotely, on a server.
+        \item Requires you to be using version control.
+        \item Can help when you're developing features in a branch/fork.
+        \item Remote services: TravisCI, CircleCI, GitLab, 
+        \item Self Hosted Services: Jenkins, Buildbot
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{TravisCI}
+    Pick this as it's easy to set up from what we've already done:
+    \begin{itemize}
+    \item Build Dockerfile from the repository
+    \item Test software using a Docker container.
+    \end{itemize}
+\end{frame}
+\end{document}
