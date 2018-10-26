@@ -1,0 +1,14 @@
+{{ $header := print "_header." .Lang }}
+	{{ range where .Site.Pages "Source.BaseFileName" $header }}
+	{{ .Content }} 
+	{{else}}
+  {{ if .Site.GetPage "page" "_header.md" }}
+    {{(.Site.GetPage "page" "_header.md").Content}}
+  {{else}}
+    <a class="baselink" href="{{.Site.BaseURL}}">{{.Site.Title}}</a>
+  {{end}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+{{end}}
