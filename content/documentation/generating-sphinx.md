@@ -6,23 +6,32 @@ draft: false
 
 # Quick Notes
 
-* Pip install sphinx rather than through apt-get bceause otherwise TZ settings do not work well
-* sphinx-quickstart
+* Pip install sphinx rather than through apt-get because otherwise TZ settings do not work well
+
+```Docker
+from ubuntu:18.04
+RUN apt-get update && apt-get install python3 python3-pip
+
+RUN pip3 install
+
+
+WORKDIR /app
+```
+
+Then
+```bash
+docker build . -t documentation
+docker run -v `pwd`:/app -it documentation
+sphinx-quickstart
+```
 * Most defaults are OK but:
   *  We want to set default document to markdown rather than RST
   *  We want to enable MathJax
-  * 
 
 
+* Now Edit conf.py:
 
-* Edit conf.py:
-
-- If you want to change the default theme, we can use RTD by changing the line to:
-```
-html_theme = 'sphinx_rtd_theme'
-```
-
-  - Uncomment the lines of code here:
+Uncomment these lines of code in conf.py
 ```python
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -50,7 +59,7 @@ from quicktest import *
 Then, from root dir:
 
 ```
-sphinx-apidoc -s md -o source ../quicktest 
+sphinx-apidoc -s md -o source ../quicktest
 make html
 ```
 Note: -s flag changes suffix from rst autodoc to md autodoc.
@@ -94,4 +103,8 @@ You can see that the tutorial page has appeared in the documentation.
 
 * Import Repository
 
-* 
+* Select correct repo
+
+* Click build
+
+* Builds automatically
