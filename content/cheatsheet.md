@@ -1,8 +1,8 @@
 ---
-title: "Cheatsheet"
+title: "Command Cheatsheet"
 date: 2018-10-26T09:41:56+01:00
 draft: false
-weight: 103
+weight: 80
 ---
 
 The following is a list of standard commands in cmd on Windows or Bash on *nix systems.
