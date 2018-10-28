@@ -2,6 +2,7 @@
 title: "Generating documentation with Sphinx"
 date: 2018-10-26T22:07:04+01:00
 draft: false
+weight: 42
 ---
 
 # Quick Notes

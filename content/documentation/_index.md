@@ -2,7 +2,7 @@
 title: "Documentation"
 date: 2018-10-26T10:58:18+01:00
 draft: false
-weight: 50
+weight: 40
 ---
 
 ### What makes good documentation on a software project?

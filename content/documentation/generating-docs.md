@@ -2,6 +2,7 @@
 title: "Generating Docs"
 date: 2018-10-26T22:07:04+01:00
 draft: false
+weight: 41
 ---
 
 #### How can we generate documentation from code?

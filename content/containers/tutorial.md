@@ -2,7 +2,7 @@
 title: "Getting Started with Docker"
 date: 2018-10-26T09:41:56+01:00
 draft: false
-weight: 30
+weight: 31
 ---
 
 ### First Steps

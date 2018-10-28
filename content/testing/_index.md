@@ -2,7 +2,7 @@
 title: "Testing Scientific Code"
 date: 2018-10-26T10:55:14+01:00
 draft: false
-weight: 40
+weight: 30
 ---
 
 ### What is a software test?

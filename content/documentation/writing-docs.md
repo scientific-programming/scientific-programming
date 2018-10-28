@@ -1,7 +1,8 @@
 ---
 title: "Sphinx: Python documentation"
 date: 2018-10-26T22:07:04+01:00
-draft: true
+draft: false
+weight: 43
 ---
 
 # Installing Sphinx
@@ -19,7 +20,7 @@ RUN apt-get update && apt-get install -y python3 python3-pip python3-sphinx
 WORKDIR /app
 ```
 
-with the command: 
+with the command:
 
 ```bash
 docker build . -t sphinx
@@ -27,5 +28,4 @@ docker build . -t sphinx
 
 Note that we've had to add some timezone information into the container here; don't worry too much about this.
 
-Now, go to the repository in which you have your Python files. 
-
+Now, go to the repository in which you have your Python files.
