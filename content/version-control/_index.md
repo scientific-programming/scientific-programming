@@ -1,7 +1,7 @@
 ---
 title: "Version Control"
 date: 2018-10-25T17:49:03+01:00
-draft: true
+draft: false
 weight: 20
 ---
 
