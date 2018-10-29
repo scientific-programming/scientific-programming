@@ -57,7 +57,7 @@ Stepping away from scientific software bugs, let's look at how poor software des
 
 In 2002, Tony Blair's Labour government decided to rectify this, and in 2003 and 2004 awarded contracts to Accenture, Fujitsu, BT Health and Computer Sciences Corporation between 2002 and 2004, which the intention of building a complex set of regional systems which could integrate with one another. The initial projected timescale for this project was three years. The proposed system had an expected cost 2.3 Billion and would have been the biggest government IT project in the world.
 
-The scheme was eventually cancelled in 2011 but 16 years later costs from fallout of this project are still escalating - currently at over £20 billion. Compare this, for example, to the UK budget which in 2018 is 5 billion. A government report "Government and IT - a recipe for rip offs" in 2011 blamed **lack of in-house technical knowledge** and a **tendency to build large complex projects that cannot adapt to changing requirements**.
+The scheme was eventually cancelled in 2011 but 16 years later costs from fallout of this project are still escalating - currently at over £20 billion. Compare this, for example, to the UK science budget which in 2018 is £5 billion. A government report "Government and IT - a recipe for rip offs" in 2011 blamed **lack of in-house technical knowledge** and a **tendency to build large complex projects that cannot adapt to changing requirements**.
 
 ### More examples
 

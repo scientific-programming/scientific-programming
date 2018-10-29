@@ -1,7 +1,7 @@
 ---
 title: "Sphinx: Python documentation"
 date: 2018-10-26T22:07:04+01:00
-draft: false
+draft: true
 weight: 43
 ---
 
