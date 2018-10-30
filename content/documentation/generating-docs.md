@@ -1,11 +1,11 @@
 ---
-title: "Generating Docs"
+title: "Documenting Code"
 date: 2018-10-26T22:07:04+01:00
-draft: true
+draft: false
 weight: 41
 ---
 
-#### How can we generate documentation from code?
+#### Writing some documentation
 
 There are a number of different tools for automatically generating documentation
 for different languages. For Python, a common tool is [Sphinx](http://www.sphinx-doc.org/en/stable/).

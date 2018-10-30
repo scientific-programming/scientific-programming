@@ -1,29 +1,40 @@
 ---
 title: "Writing Simple Tests"
 date: 2018-10-26T10:56:09+01:00
-draft: true
+draft: false
 weight: 33
 ---
 
+#### Set up
 
-#### Starting off simply: Squaring a number
+For this workshop, build the following Dockerfile, and label it 'testing'. Pip is a package manager for Python; using it, we can install Python libraries.
 
-Consider as a really simple example, a function which takes a number and computes the square of that number.
+```docker
+from ubuntu:18.04
 
-```python
-def square(x):
-    return x * x
+RUN apt-get update && apt-get install -y python3 python3-pip
 
+RUN pip install numpy matplotlib
+
+WORKDIR /app
 ```
+
+
+#### Starting off simply: Normalising a vector
+
+Consider as a really simple example, a function which normalises a vector. We're going to start and thing about how it should work.
+
+If there are n elements in a vector, the norm is given by:
+$$\sqrt{x_1^2 + x_2^2 + x_3^2 + x_4^2 + \cdot + x_n^2}$$
 
 Various appropriate tests of this could check:
 
-* Is the correct answer given for positive integers?
-* Is the correct answer given for negative integers?
-* Is the correct answer given for zero?
-* Is the correct answer given for positive and negative decimals?
-* What is the behaviour for complex numbers?
+* If we pass an array full of integers or floating point numbers, do we get the correct answer?
+* If we pass an array which is full of zeros?
 * How does the function behave when an input argument is not of the type specified is passed in (such as a string)?
+
+Now we've thought about what we ought to test, we can write a test. In Python, the way to do this is to preface the name of a function with "test_". Create a
+
 
 It's clear that all of these would be sensible, but considering it carefully, it shows immediately the difficulty of actually applying testing in practice. There are an infinite amount of numerical input arguments - we cannot reasonably test them all.
 
@@ -134,10 +145,29 @@ As many tests as are necessary can be written.
 
 ### Exceptions
 
-Most programming languages have the concept of exceptions. An exception is just a way of handling conditions which happen while a programme is running which require special handling.
+Most programming languages have the concept of exceptions. An exception is just a way of dealing erroneous conditions which happen while a programme is running which require special handling. In Python doing this in your own code is really straightforward. For example, when calculating the Coulomb potential in 1-D, we need to make sure that if the input distance is zero, the function raises an error, because the input argument is invalid. We can do this like:
+
+```
+def CoulombPotential(r):
+    if (r == 0):
+        raise ValueError("r cannot equal zero.")
+    return 1 / abs(r)
+```
+
+Now, when we run this code, if 0 is passed as an input argument:
 
 
-### Aside: Debug Mode
+```python
+>>> CoulombPotential(0)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 3, in CoulombPotential
+ValueError: r cannot equal zero.
+```
+
+
+
+### Debug Mode
 
 Many people do not know that the Python interpreter runs in 'debug' mode by default. When it is disabled, by running Python with the '-O' flag, all asserts are skipped, and the flag '__debug__' is set to True. Utilising this can be useful when you want to check code for correctness, but know that some checks you are running can be costly in performance. It can also be used to provide more
 
@@ -175,19 +205,56 @@ Traceback (most recent call last):
 TypeError: can't multiply sequence by non-int of type 'str'
 ```
 
-We can see that the print statement is completely skipped, and instead of our helpful error message which resulted from our check, we get Python's slightly less helpful one.
+We can see that the print statement is completely skipped, and instead of our helpful error message which resulted from our check, we get Python's less helpful one.
 
-### Exercise: Write a first function and test
+{{% panel theme="info" header="C, C++ and FORTRAN Compilers" %}}
+Achieving the same in compiled languages is also straightforward, because a preprocessor runs over the code before the compilation stage when a compiler is invoked. Macros can be used to disable code under certain conditions, and this is widely used to disable costly code paths that diagnose errors, which can be turned on when an issue is noticed. See for example the following code which multiplies two vectors in C++:
 
-The Couloumb potential is given by $$ V\left(r\right) = \frac{q}{|r|} $$
+```c++
+void multiply_vector(const std::vector<double> a,
+                     double b,
+                     std::vector<double> &c) {
 
-* Write a function that takes two parameters, x and q, and returns this potential.
-
-* Write a test for the function, and
-
-Note: The power operator in Python is "**", so to take the square root:
-
-```python3
->>> 4 ** 0.5
-2
+  for(int i = 0; i < a.size(); i++) {
+    c[i] = a[i] * b;
+    #ifdef MYPROJECT_DEBUG
+    std::cout << "c[" << i << "] = " << c[i] << std::endl;
+    #endif
+  }
+}
 ```
+
+Compiling with g++, you can enable the printing of the array in this function just by passing a flag:
+
+```g++
+g++ file.cpp -DMYPROJECT_DEBUG
+```
+{{% /panel %}}
+
+### Try and Except
+
+We've already shown how to raise errors under particular conditions.
+
+
+### Exercise 1: Write a first function and test
+
+The Lennard-Jones potential is given by $$ V\left(r\right) = \epsilon \left[\left(\frac{r_m}{r}\right)^{12} - 2\left(\frac{r_m}{r}\right)^6\right]$$
+
+* Write a function that takes three numbers - $$\epsilon$$, $$r_m$$ and $$r$$, and returns this potential.
+
+* Write a test for this function which checks the values.
+* Write a test that checks that the function throws a ValueError if numerical arguments are not passed.
+
+
+### Exercise 2: Normalise a vector
+
+Write a function which takes a numpy array of arbitrary length:
+
+```
+import numpy as np
+
+
+a = np.array([1.0, 2.0, 3.0])
+```
+
+and returns

@@ -1,7 +1,7 @@
 ---
 title: "Documentation"
 date: 2018-10-26T10:58:18+01:00
-draft: true
+draft: false
 weight: 40
 ---
 
